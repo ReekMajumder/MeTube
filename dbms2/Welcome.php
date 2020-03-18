@@ -334,7 +334,7 @@ a.sign:hover {
   </div>
   
 
-<!-- 
+
 <div class="sidenav">
   <a href="#home">Home</a>
   <button class="dropdown-btn">Popular Media 
@@ -349,39 +349,10 @@ a.sign:hover {
   <a href="#recentuploads">Recent Uploads</a>
   <a href="#recommended">Recommended</a>
   
-</div> -->
+</div>
 
 
 </div>  <!-- Container div -->
-
-<script type="text/javascript">
-	
-	$(document).ready(function(){
-
-// $('#login').on('shown.bs.modal', function() {
-//     $('#loginForm').bootstrapValidator('resetForm', true);
-// });
-
-			// $('#login_button').click(function(){
-			// 	var username = $('#username').val();
-			// 	var password = $('#password').val();
-
-			// 	if(username != '' && password != ''){
-			// 		$.ajax({
-			// 			url:"action.php",
-			// 			method:"POST",
-			// 			data:{username:username,password:password},
-			// 			success:function(data){
-			// 				if(data == 'No'){
-			// 					alert("Wrong data");
-			// 				}
-			// 			}
-
-			// 		})
-			// 	}
-			// });
-	});
-</script>
 
 
 
@@ -426,16 +397,17 @@ filter_has_var(INPUT_POST, "gender") && filter_has_var(INPUT_POST, "dateofbirth"
 			// echo $result;
 		}
 	}else{
-		echo "<br>Error in result <br>";
+		// echo "<br>Error in result <br>";
 
 		$error =  $qi->get_error();
-		echo '<script type="text/javascript">toastr.error(\'Error Registering. - ERROR : $error.\')</script>';
+		// echo $error;
+		echo '<script type="text/javascript">toastr.error("Error Registering. - ERROR : $error.")</script>';
 		// echo $error;
 		// echo "<br>";
 		if(preg_match("/Duplicate entry/", $error) && preg_match("/PRIMARY/", $error)){
 			// echo "invalid primary key";
 			// echo '<script type="text/javascript">notification($error,\'error \' ); </script>';
-			echo '<script type="text/javascript">toastr.error(\'Error Registering. Kindly try after some time.\')</script>';
+			echo '<script type="text/javascript">toastr.error(\'Error Registering. Invalid Username.\')</script>';
 		}
 	}
 
@@ -463,6 +435,9 @@ if(isset($_POST['loginSubmit'])){
 				$nextPage = substr($_SERVER["PHP_SELF"],0,strrpos($_SERVER["PHP_SELF"],"/")+1)."profile.php";
 				// echo "<br>";
 				// echo $_SERVER["PHP_SELF"];
+				// add session variables
+
+
 				redirect($nextPage);
 			}else{
 				// define error
